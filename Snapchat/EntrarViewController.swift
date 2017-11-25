@@ -10,6 +10,11 @@ import UIKit
 
 class EntrarViewController: UIViewController {
 
+    
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var senhaField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,6 +35,11 @@ class EntrarViewController: UIViewController {
             return true
         }
     }
+    
+    @IBAction func logarButton(_ sender: UIButton) {
+        
+    }
+    
     
 
     /*

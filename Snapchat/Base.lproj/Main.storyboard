@@ -138,6 +138,9 @@
                                 <state key="normal" title="Criar Conta">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="criarContaButton:" destination="kjR-EB-3QP" eventType="touchUpInside" id="99K-VB-f1D"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -165,6 +168,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qbf-M9-2je"/>
                     </view>
+                    <connections>
+                        <outlet property="confirmarSenhaField" destination="Asp-tP-SPO" id="E2f-d0-DUa"/>
+                        <outlet property="emailField" destination="QHj-Qf-Hfl" id="P0h-AQ-WWf"/>
+                        <outlet property="senhaField" destination="mP6-A1-aTt" id="zVG-8Y-VP2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MqE-qT-0vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -213,6 +221,9 @@
                                 <state key="normal" title="Entrar">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="logarButton:" destination="J41-iz-nlq" eventType="touchUpInside" id="mEX-hn-uW3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -234,6 +245,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nCe-RV-zeq"/>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="7BX-Fe-D8k" id="tMR-sM-531"/>
+                        <outlet property="senhaField" destination="Tnu-DT-iqA" id="8Qp-rm-LVg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIA-MF-mPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

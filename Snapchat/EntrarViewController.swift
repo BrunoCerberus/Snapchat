@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class EntrarViewController: UIViewController {
 
@@ -36,8 +37,71 @@ class EntrarViewController: UIViewController {
         }
     }
     
-    @IBAction func logarButton(_ sender: UIButton) {
+    private func logarUsuario(_ email: String?,_ senha: String?) {
         
+        if let _email = email, let _senha = senha {
+            Auth.auth().signIn(withEmail: _email, password: _senha) { (user, erro) in
+                
+                if erro == nil {
+                    if user == nil {
+                        self.exibirAlerta("Erro ao autenticar", "Problema ao realizar a autenticacao, tente novamente!")
+                    } else {
+//                        self.performSegue(withIdentifier: "segueLogin", sender: self)
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = storyboard.instantiateViewController(withIdentifier: "TelaInicial")
+                        let transition = CATransition()
+                        transition.duration = 0.5
+                        transition.type = kCATransitionPush
+                        transition.subtype = kCATransitionFromRight
+                        self.view.window!.layer.add(transition, forKey: kCATransition)
+                        self.present(controller, animated: false, completion: nil)
+                        
+                    }
+                } else {
+                    let _erro = erro! as NSError
+                    let mensagem: String!
+                    
+                    /*
+                     ERROR_WRONG_PASSWORD
+                     ERROR_INVALID_EMAIL
+                     ERROR_USER_NOT_FOUND
+                     */
+                    
+                    switch _erro.userInfo["error_name"] as! String {
+                    case "ERROR_WRONG_PASSWORD":
+                        mensagem = "Senha incorreta, tente outra senha!"
+                        break
+                        
+                    case "ERROR_INVALID_EMAIL":
+                        mensagem = "Email invalido, tente user um email valido!"
+                        break
+                        
+                    case "ERROR_USER_NOT_FOUND":
+                        mensagem = "Parece que esse email nao esta em nossa base da dados, tente outro email ou faça um novo cadastro!"
+                        break
+                        
+                    default:
+                        mensagem = "Algo errado aconteceu, tente novamente mais tarde!"
+                    }
+                    
+                    self.exibirAlerta("Erro", mensagem)
+                    
+                }
+            }
+        }
+        
+    }
+    
+    private func exibirAlerta(_ titulo: String,_ mensagem: String) {
+        let alerta = UIAlertController(title: titulo, message: mensagem, preferredStyle: UIAlertControllerStyle.alert)
+        let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
+        
+        alerta.addAction(ok)
+        self.present(alerta, animated: true, completion: nil)
+    }
+    
+    @IBAction func logarButton(_ sender: UIButton) {
+        self.logarUsuario(emailField.text, senhaField.text)
     }
     
     

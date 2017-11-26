@@ -42,8 +42,15 @@ class CriarViewController: UIViewController {
                 Auth.auth().createUser(withEmail: _email, password: _password) { (user, erro) in
                     
                     if erro == nil {
-                        self.cadastradoComSucesso = true
-                        self.exibirAlerta("Sucesso", "Usuário criado com sucesso, agora basta apenas logar :)")
+                        
+                        if user == nil {
+                            self.exibirAlerta("Erro ao autenticar", "Problema ao realizar a autenticaçao, tente novamente mais tarde")
+                        } else {
+                            
+                            self.cadastradoComSucesso = true
+                            self.exibirAlerta("Sucesso", "Usuário criado com sucesso, agora basta apenas logar :)")
+                        }
+                        
                         
                     } else {
 //                        self.exibirAlerta("Erro", "Nao foi possivel criar o usario no momento, por favor tente mais tarde!")
@@ -115,7 +122,15 @@ class CriarViewController: UIViewController {
     
     private func verificaSeFoiCadastrado() {
         if self.cadastradoComSucesso {
-            self.navigationController?.popViewController(animated: true)
+//            self.performSegue(withIdentifier: "segueCadastroLogin", sender: self)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "TelaInicial")
+            let transition = CATransition()
+            transition.duration = 0.5
+            transition.type = kCATransitionPush
+            transition.subtype = kCATransitionFromRight
+            self.view.window!.layer.add(transition, forKey: kCATransition)
+            self.present(controller, animated: false, completion: nil)
         }
     }
     

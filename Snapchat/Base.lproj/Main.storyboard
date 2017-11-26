@@ -78,6 +78,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Snapchat" id="zjA-Zo-uO3"/>
+                    <connections>
+                        <segue destination="0e2-Wf-Tpn" kind="presentation" identifier="segueLoginAutomatico" id="YJx-H9-Mm7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -172,11 +175,36 @@
                         <outlet property="confirmarSenhaField" destination="Asp-tP-SPO" id="E2f-d0-DUa"/>
                         <outlet property="emailField" destination="QHj-Qf-Hfl" id="P0h-AQ-WWf"/>
                         <outlet property="senhaField" destination="mP6-A1-aTt" id="zVG-8Y-VP2"/>
+                        <segue destination="0e2-Wf-Tpn" kind="presentation" identifier="segueCadastroLogin" id="VDv-9o-75a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MqE-qT-0vN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1348" y="641.82908545727139"/>
+        </scene>
+        <!--Tela Inicial View Controller-->
+        <scene sceneID="Uax-t9-qen">
+            <objects>
+                <viewController storyboardIdentifier="TelaInicial" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0e2-Wf-Tpn" customClass="TelaInicialViewController" customModule="Snapchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7FZ-xf-ZGB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tela Principal" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-kG-lCT">
+                                <rect key="frame" x="127" y="323" width="113" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="f8T-cK-L7a"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4FM-ZA-zeM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2680.8000000000002" y="214.54272863568218"/>
         </scene>
         <!--Entrar-->
         <scene sceneID="qSG-Qv-qny">
@@ -248,11 +276,12 @@
                     <connections>
                         <outlet property="emailField" destination="7BX-Fe-D8k" id="tMR-sM-531"/>
                         <outlet property="senhaField" destination="Tnu-DT-iqA" id="8Qp-rm-LVg"/>
+                        <segue destination="0e2-Wf-Tpn" kind="presentation" id="oAY-dI-vzv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIA-MF-mPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1348" y="-368.36581709145429"/>
+            <point key="canvasLocation" x="1348" y="-382"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hlL-Jj-E0y">
@@ -276,4 +305,7 @@
     <resources>
         <image name="logo" width="200" height="200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YJx-H9-Mm7"/>
+    </inferredMetricsTieBreakers>
 </document>

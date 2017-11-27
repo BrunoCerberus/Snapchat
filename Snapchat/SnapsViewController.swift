@@ -1,18 +1,30 @@
 //
-//  TelaInicialViewController.swift
+//  SnapsViewController.swift
 //  Snapchat
 //
-//  Created by Bruno Lopes de Mello on 25/11/2017.
+//  Created by Bruno Lopes de Mello on 26/11/2017.
 //  Copyright © 2017 Bruno Lopes de Mello. All rights reserved.
 //
 
 import UIKit
+import Firebase
 
-class TelaInicialViewController: UIViewController {
+class SnapsViewController: UIViewController {
 
+    
+    @IBAction func sair(_ sender: Any) {
+        let autenticacao = Auth.auth()
+
+        do {
+            try autenticacao.signOut()
+            dismiss(animated: true, completion: nil)           
+        } catch let erro {
+            print("Nao foi possivel deslogar o usuario: \(erro.localizedDescription)")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 

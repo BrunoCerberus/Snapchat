@@ -46,15 +46,16 @@ class EntrarViewController: UIViewController {
                     if user == nil {
                         self.exibirAlerta("Erro ao autenticar", "Problema ao realizar a autenticacao, tente novamente!")
                     } else {
-//                        self.performSegue(withIdentifier: "segueLogin", sender: self)
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let controller = storyboard.instantiateViewController(withIdentifier: "TelaInicial")
+//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                        let controller = storyboard.instantiateViewController(withIdentifier: "TelaInicial")
                         let transition = CATransition()
                         transition.duration = 0.5
                         transition.type = kCATransitionPush
                         transition.subtype = kCATransitionFromRight
                         self.view.window!.layer.add(transition, forKey: kCATransition)
-                        self.present(controller, animated: false, completion: nil)
+//                        self.present(controller, animated: false, completion: nil)
+
+                        self.performSegue(withIdentifier: "segueLogin", sender: nil)
                         
                     }
                 } else {

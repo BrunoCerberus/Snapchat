@@ -22,26 +22,21 @@ class ViewController: UIViewController {
             print("Erro: \(erro.localizedDescription)")
         }
         
-        self.verificaSeUsuarioEstaConectado()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.verificaSeUsuarioEstaConectado()
     }
     
     private func verificaSeUsuarioEstaConectado() {
         Auth.auth().addStateDidChangeListener { (auth, user) in
+            
             if user == nil {
                 //user not conected
+                print("Usuario nao existe")
             } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "TelaInicial")
-                let transition = CATransition()
-                transition.duration = 0.5
-                transition.type = kCATransitionPush
-                transition.subtype = kCATransitionFromRight
-                self.view.window!.layer.add(transition, forKey: kCATransition)
-                self.present(controller, animated: false, completion: nil)
+                self.performSegue(withIdentifier: "segueLoginAutomatico", sender: nil)
             }
         }
     }

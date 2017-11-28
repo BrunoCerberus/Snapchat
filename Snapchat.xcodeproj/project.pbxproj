@@ -10,6 +10,7 @@
 		8FEB7E9E8CA60E8811D52503 /* Pods_Snapchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC23552EB7156378E7B12992 /* Pods_Snapchat.framework */; };
 		EC1AA1291FC8ED4B007F988C /* EntrarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AA1281FC8ED4B007F988C /* EntrarViewController.swift */; };
 		EC1AA12B1FC8ED82007F988C /* CriarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AA12A1FC8ED82007F988C /* CriarViewController.swift */; };
+		EC22CC501FCCEB0400F22F6E /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC22CC4F1FCCEB0400F22F6E /* Alerta.swift */; };
 		EC7CE0E01FCAFFD900E2032A /* SnapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7CE0DF1FCAFFD900E2032A /* SnapsViewController.swift */; };
 		EC7CE0E21FCB002700E2032A /* FotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7CE0E11FCB002700E2032A /* FotoViewController.swift */; };
 		EC7CE0E41FCB31F400E2032A /* exUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7CE0E31FCB31F400E2032A /* exUIImage.swift */; };
@@ -27,6 +28,7 @@
 		DB2418995CF1A338B6E9F532 /* Pods-Snapchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snapchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Snapchat/Pods-Snapchat.debug.xcconfig"; sourceTree = "<group>"; };
 		EC1AA1281FC8ED4B007F988C /* EntrarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrarViewController.swift; sourceTree = "<group>"; };
 		EC1AA12A1FC8ED82007F988C /* CriarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarViewController.swift; sourceTree = "<group>"; };
+		EC22CC4F1FCCEB0400F22F6E /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
 		EC7CE0DF1FCAFFD900E2032A /* SnapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapsViewController.swift; sourceTree = "<group>"; };
 		EC7CE0E11FCB002700E2032A /* FotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotoViewController.swift; sourceTree = "<group>"; };
 		EC7CE0E31FCB31F400E2032A /* exUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exUIImage.swift; sourceTree = "<group>"; };
@@ -70,6 +72,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EC22CC4D1FCCEAA800F22F6E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EC7DD9A11FC4811800223E09 /* ViewController.swift */,
+				EC1AA1281FC8ED4B007F988C /* EntrarViewController.swift */,
+				EC1AA12A1FC8ED82007F988C /* CriarViewController.swift */,
+				EC7CE0DF1FCAFFD900E2032A /* SnapsViewController.swift */,
+				EC7CE0E11FCB002700E2032A /* FotoViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EC22CC4E1FCCEACA00F22F6E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EC22CC4F1FCCEB0400F22F6E /* Alerta.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		EC7DD9931FC4811800223E09 = {
 			isa = PBXGroup;
 			children = (
@@ -91,14 +113,11 @@
 		EC7DD99E1FC4811800223E09 /* Snapchat */ = {
 			isa = PBXGroup;
 			children = (
+				EC22CC4E1FCCEACA00F22F6E /* Models */,
+				EC22CC4D1FCCEAA800F22F6E /* ViewControllers */,
 				ECEE0A4A1FC9897D00E6FEE8 /* Snapchat.entitlements */,
 				EC7DD9B31FC484DB00223E09 /* GoogleService-Info.plist */,
 				EC7DD99F1FC4811800223E09 /* AppDelegate.swift */,
-				EC7DD9A11FC4811800223E09 /* ViewController.swift */,
-				EC1AA1281FC8ED4B007F988C /* EntrarViewController.swift */,
-				EC1AA12A1FC8ED82007F988C /* CriarViewController.swift */,
-				EC7CE0DF1FCAFFD900E2032A /* SnapsViewController.swift */,
-				EC7CE0E11FCB002700E2032A /* FotoViewController.swift */,
 				EC7DD9A31FC4811800223E09 /* Main.storyboard */,
 				EC7DD9A61FC4811800223E09 /* Assets.xcassets */,
 				EC7DD9A81FC4811800223E09 /* LaunchScreen.storyboard */,
@@ -249,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC22CC501FCCEB0400F22F6E /* Alerta.swift in Sources */,
 				EC1AA12B1FC8ED82007F988C /* CriarViewController.swift in Sources */,
 				EC7DD9A21FC4811800223E09 /* ViewController.swift in Sources */,
 				EC7CE0E41FCB31F400E2032A /* exUIImage.swift in Sources */,

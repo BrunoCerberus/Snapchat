@@ -17,9 +17,14 @@ class SnapsViewController: UIViewController {
 
         do {
             try autenticacao.signOut()
-            dismiss(animated: true, completion: nil)           
+            dismiss(animated: true, completion: nil)
         } catch let erro {
             print("Nao foi possivel deslogar o usuario: \(erro.localizedDescription)")
+        }
+    }
+    override var prefersStatusBarHidden: Bool {
+        get {
+            return true
         }
     }
     

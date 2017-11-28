@@ -15,6 +15,7 @@ class CriarViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var senhaField: UITextField!
     @IBOutlet weak var confirmarSenhaField: UITextField!
+    @IBOutlet weak var nomeCompleto: UITextField!
     
     //variaveis
     var cadastradoComSucesso: Bool = false
@@ -31,13 +32,13 @@ class CriarViewController: UIViewController {
     
     
     @IBAction func criarContaButton(_ sender: Any) {
-        criarContaUsuario(emailField.text, senhaField.text, confirmarSenhaField.text)
+        criarContaUsuario(emailField.text, senhaField.text, confirmarSenhaField.text, nomeCompleto.text)
     }
     
-    private func criarContaUsuario(_ email: String?,_ password: String?,_ confirmPassword: String?) {
+    private func criarContaUsuario(_ email: String?,_ password: String?,_ confirmPassword: String?,_ nomeCompleto: String?) {
         
         if confirmaSenha(password, confirmPassword) {
-            if let _password = password, let _email = email {
+            if let _password = password, let _email = email, let _nomeCompleto = nomeCompleto {
                 
                 Auth.auth().createUser(withEmail: _email, password: _password) { (user, erro) in
                     

@@ -17,6 +17,7 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     
     var imagePicker = UIImagePickerController()
+    var idImagem = NSUUID().uuidString //identificador unico para cada imagem
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +38,13 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.imagem.image = imagemRecuperada.fixedOrientation()
         imagePicker.dismiss(animated: true, completion: nil)
         self.proximoButton.isEnabled = true
+        self.proximoButton.backgroundColor = UIColor(red: 0.553, green: 0.369, blue: 0.749, alpha: 1)
     }
     
     
     @IBAction func proximoPasso(_ sender: Any) {
         salvarImagem()
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func salvarImagem() {
@@ -53,15 +56,18 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         if let  imageSelecionada = imagem.image {
             if  let imagemDados = UIImageJPEGRepresentation(imageSelecionada, 0.5) {
-                imagens.child("imagem.jpg").putData(imagemDados, metadata: nil, completion: { (metaDados, erro) in
+                imagens.child("\(self.idImagem).jpg").putData(imagemDados, metadata: nil, completion: { (metaDados, erro) in
                     
                     if erro == nil {
                         self.proximoButton.isEnabled = true
                         self.proximoButton.setTitle("Próximo", for: .normal)
                         print("Sucesso ao fazer upload da imagem")
+                        print(metaDados?.downloadURL()?.absoluteString ?? "NO_URL")
                         
                     } else {
                         print("Erro ao fazer o upload: \(String(describing: erro?.localizedDescription))")
+                        let alerta = Alerta(titulo: "Upload Falhou", mensagem: "Erro ao salvar o arquivo, tente novamente!")
+                        self.present(alerta.getAlerta(), animated: true, completion: nil)
                     }
                 })
             }
@@ -69,18 +75,15 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-    private func exibirAlerta(_ titulo: String,_ mensagem: String) {
-        let alerta = UIAlertController(title: titulo, message: mensagem, preferredStyle: UIAlertControllerStyle.alert)
-        let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
-        
-        alerta.addAction(ok)
-        self.present(alerta, animated: true, completion: nil)
-    }
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        get {
+            return true
+        }
     }
     
 

@@ -44,17 +44,9 @@ class EntrarViewController: UIViewController {
                 
                 if erro == nil {
                     if user == nil {
-                        self.exibirAlerta("Erro ao autenticar", "Problema ao realizar a autenticacao, tente novamente!")
+                        let alerta = Alerta(titulo: "Erro ao autenticar", mensagem: "Problema ao realizar a autenticacao, tente novamente!")
+                        self.present(alerta.getAlerta(), animated: true, completion: nil)
                     } else {
-//                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                        let controller = storyboard.instantiateViewController(withIdentifier: "TelaInicial")
-                        let transition = CATransition()
-                        transition.duration = 0.5
-                        transition.type = kCATransitionPush
-                        transition.subtype = kCATransitionFromRight
-                        self.view.window!.layer.add(transition, forKey: kCATransition)
-//                        self.present(controller, animated: false, completion: nil)
-
                         self.performSegue(withIdentifier: "segueLogin", sender: nil)
                         
                     }
@@ -85,20 +77,12 @@ class EntrarViewController: UIViewController {
                         mensagem = "Algo errado aconteceu, tente novamente mais tarde!"
                     }
                     
-                    self.exibirAlerta("Erro", mensagem)
-                    
+                    let alerta = Alerta(titulo: "Erro", mensagem: mensagem)
+                    self.present(alerta.getAlerta(), animated: true, completion: nil)
                 }
             }
         }
         
-    }
-    
-    private func exibirAlerta(_ titulo: String,_ mensagem: String) {
-        let alerta = UIAlertController(title: titulo, message: mensagem, preferredStyle: UIAlertControllerStyle.alert)
-        let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil)
-        
-        alerta.addAction(ok)
-        self.present(alerta, animated: true, completion: nil)
     }
     
     @IBAction func logarButton(_ sender: UIButton) {

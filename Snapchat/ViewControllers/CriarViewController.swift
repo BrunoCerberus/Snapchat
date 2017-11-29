@@ -9,8 +9,8 @@
 import UIKit
 import Firebase
 
-class CriarViewController: UIViewController {
-
+class CriarViewController: UIViewController, UITextFieldDelegate {
+    
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var senhaField: UITextField!
@@ -22,8 +22,12 @@ class CriarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        emailField.delegate = self
+        senhaField.delegate = self
+        confirmarSenhaField.delegate = self
+        nomeCompleto.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,53 +43,64 @@ class CriarViewController: UIViewController {
         
         if confirmaSenha(password, confirmPassword) {
             if let _password = password, let _email = email, let _nomeCompleto = nomeCompleto {
-                
-                Auth.auth().createUser(withEmail: _email, password: _password) { (user, erro) in
-                    
-                    if erro == nil {
+                if _nomeCompleto != "" {
+                    Auth.auth().createUser(withEmail: _email, password: _password) { (user, erro) in
                         
-                        if user == nil {
-                            self.exibirAlerta("Erro ao autenticar", "Problema ao realizar a autenticaçao, tente novamente mais tarde")
+                        if erro == nil {
+                            
+                            if user == nil {
+                                self.exibirAlerta("Erro ao autenticar", "Problema ao realizar a autenticaçao, tente novamente mais tarde")
+                            } else {
+                                
+                                let database = Database.database().reference()
+                                let usuarios = database.child("usuarios")
+                                
+                                let usuarioDados = ["nome":_nomeCompleto, "email":_email]
+                                usuarios.child((user!.uid)).setValue(usuarioDados)
+                                
+                                self.cadastradoComSucesso = true
+                                self.exibirAlerta("Sucesso", "Usuário criado com sucesso, agora basta apenas logar :)")
+                            }
+                            
+                            
                         } else {
+                           
                             
-                            self.cadastradoComSucesso = true
-                            self.exibirAlerta("Sucesso", "Usuário criado com sucesso, agora basta apenas logar :)")
+                            /*
+                             ERROR_INVALID_EMAIL
+                             ERROR_WEAK_PASSWORD
+                             ERROR_EMAIL_ALREADY_IN_USE
+                             */
+                            
+                            let _erro = erro! as NSError
+                            var mensagem: String!
+                            switch _erro.userInfo["error_name"] as! String{
+                                
+                            case "ERROR_INVALID_EMAIL":
+                                mensagem = "Digite um email valido!"
+                                break
+                                
+                            case "ERROR_WEAK_PASSWORD":
+                                mensagem = "Senha muito fraca, digite uma senha mais forte!"
+                                break
+                                
+                            case "ERROR_EMAIL_ALREADY_IN_USE":
+                                mensagem = "Esse email ja foi usado para um cadastro, use outro email!"
+                                break
+                                
+                            default:
+                                mensagem = "Algo deu errado, tente novamente mais tarde!"
+                                
+                            }
+                            self.exibirAlerta("Erro", mensagem)
                         }
-                        
-                        
-                    } else {
-//                        self.exibirAlerta("Erro", "Nao foi possivel criar o usario no momento, por favor tente mais tarde!")
-                        
-                        /*
-                         ERROR_INVALID_EMAIL
-                         ERROR_WEAK_PASSWORD
-                         ERROR_EMAIL_ALREADY_IN_USE
-                         */
-                        
-                        let _erro = erro! as NSError
-                        var mensagem: String!
-                        switch _erro.userInfo["error_name"] as! String{
-                            
-                        case "ERROR_INVALID_EMAIL":
-                            mensagem = "Digite um email valido!"
-                            break
-                            
-                        case "ERROR_WEAK_PASSWORD":
-                            mensagem = "Senha muito fraca, digite uma senha mais forte!"
-                            break
-                            
-                        case "ERROR_EMAIL_ALREADY_IN_USE":
-                            mensagem = "Esse email ja foi usado para um cadastro, use outro email!"
-                            break
-                            
-                        default:
-                            mensagem = "Algo deu errado, tente novamente mais tarde!"
-                            
-                        }
-                        self.exibirAlerta("Erro", mensagem)
                     }
+                } else {
+                    self.exibirAlerta("Dados Incorretos", "Digite o seu nome para proseguir!")
                 }
             }
+            
+            
         } else {
             exibirAlerta("Senhas Diferentes", "Verifique se as senhas estao exatamente iguais!")
         }
@@ -132,15 +147,28 @@ class CriarViewController: UIViewController {
             return true
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    private func dismissKeyboard() {
+        self.view.endEditing(true)
     }
-    */
-
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.dismissKeyboard()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.dismissKeyboard()
+        return false
+    }
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

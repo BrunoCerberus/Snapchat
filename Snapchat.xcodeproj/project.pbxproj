@@ -11,6 +11,8 @@
 		EC1AA1291FC8ED4B007F988C /* EntrarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AA1281FC8ED4B007F988C /* EntrarViewController.swift */; };
 		EC1AA12B1FC8ED82007F988C /* CriarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AA12A1FC8ED82007F988C /* CriarViewController.swift */; };
 		EC22CC501FCCEB0400F22F6E /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC22CC4F1FCCEB0400F22F6E /* Alerta.swift */; };
+		EC296A3F1FD244A7000AC754 /* UsuariosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC296A3E1FD244A7000AC754 /* UsuariosTableViewController.swift */; };
+		EC296A411FD248D7000AC754 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC296A401FD248D7000AC754 /* Usuario.swift */; };
 		EC7CE0E01FCAFFD900E2032A /* SnapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7CE0DF1FCAFFD900E2032A /* SnapsViewController.swift */; };
 		EC7CE0E21FCB002700E2032A /* FotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7CE0E11FCB002700E2032A /* FotoViewController.swift */; };
 		EC7CE0E41FCB31F400E2032A /* exUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7CE0E31FCB31F400E2032A /* exUIImage.swift */; };
@@ -29,6 +31,8 @@
 		EC1AA1281FC8ED4B007F988C /* EntrarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrarViewController.swift; sourceTree = "<group>"; };
 		EC1AA12A1FC8ED82007F988C /* CriarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarViewController.swift; sourceTree = "<group>"; };
 		EC22CC4F1FCCEB0400F22F6E /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
+		EC296A3E1FD244A7000AC754 /* UsuariosTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuariosTableViewController.swift; sourceTree = "<group>"; };
+		EC296A401FD248D7000AC754 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
 		EC7CE0DF1FCAFFD900E2032A /* SnapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapsViewController.swift; sourceTree = "<group>"; };
 		EC7CE0E11FCB002700E2032A /* FotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FotoViewController.swift; sourceTree = "<group>"; };
 		EC7CE0E31FCB31F400E2032A /* exUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exUIImage.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 				EC1AA1281FC8ED4B007F988C /* EntrarViewController.swift */,
 				EC1AA12A1FC8ED82007F988C /* CriarViewController.swift */,
 				EC7CE0DF1FCAFFD900E2032A /* SnapsViewController.swift */,
+				EC296A3E1FD244A7000AC754 /* UsuariosTableViewController.swift */,
 				EC7CE0E11FCB002700E2032A /* FotoViewController.swift */,
 			);
 			path = ViewControllers;
@@ -88,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				EC22CC4F1FCCEB0400F22F6E /* Alerta.swift */,
+				EC296A401FD248D7000AC754 /* Usuario.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -269,12 +275,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC22CC501FCCEB0400F22F6E /* Alerta.swift in Sources */,
+				EC296A3F1FD244A7000AC754 /* UsuariosTableViewController.swift in Sources */,
 				EC1AA12B1FC8ED82007F988C /* CriarViewController.swift in Sources */,
 				EC7DD9A21FC4811800223E09 /* ViewController.swift in Sources */,
 				EC7CE0E41FCB31F400E2032A /* exUIImage.swift in Sources */,
 				EC7CE0E01FCAFFD900E2032A /* SnapsViewController.swift in Sources */,
 				EC7DD9A01FC4811800223E09 /* AppDelegate.swift in Sources */,
 				EC7CE0E21FCB002700E2032A /* FotoViewController.swift in Sources */,
+				EC296A411FD248D7000AC754 /* Usuario.swift in Sources */,
 				EC1AA1291FC8ED4B007F988C /* EntrarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,6 +425,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RDTR6557FX;
 				INFOPLIST_FILE = Snapchat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cursoios.Snapchat1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -434,6 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RDTR6557FX;
 				INFOPLIST_FILE = Snapchat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cursoios.Snapchat1;
 				PRODUCT_NAME = "$(TARGET_NAME)";

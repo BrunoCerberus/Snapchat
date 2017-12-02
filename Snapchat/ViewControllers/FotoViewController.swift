@@ -44,7 +44,6 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func proximoPasso(_ sender: Any) {
         salvarImagem()
-        self.navigationController?.popViewController(animated: true)
     }
     
     private func salvarImagem() {
@@ -62,7 +61,9 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                         self.proximoButton.isEnabled = true
                         self.proximoButton.setTitle("Próximo", for: .normal)
                         print("Sucesso ao fazer upload da imagem")
-                        print(metaDados?.downloadURL()?.absoluteString ?? "NO_URL")
+                        let url = metaDados?.downloadURL()?.absoluteString
+                        
+                        self.performSegue(withIdentifier: "segueSelecionarUsuario", sender: url)
                         
                     } else {
                         print("Erro ao fazer o upload: \(String(describing: erro?.localizedDescription))")
@@ -72,6 +73,15 @@ class FotoViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 })
             }
             
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segueSelecionarUsuario" {
+            let controllerDestino = segue.destination as! UsuariosTableViewController
+            controllerDestino.descricao = self.descricao.text!
+            controllerDestino.urlimagem = sender as! String
+            controllerDestino.idImagem = self.idImagem
         }
     }
     

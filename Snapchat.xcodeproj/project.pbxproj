@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8FEB7E9E8CA60E8811D52503 /* Pods_Snapchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC23552EB7156378E7B12992 /* Pods_Snapchat.framework */; };
+		EC17DAD01FD4510600FFCD7E /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC17DACF1FD4510600FFCD7E /* Snap.swift */; };
 		EC1AA1291FC8ED4B007F988C /* EntrarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AA1281FC8ED4B007F988C /* EntrarViewController.swift */; };
 		EC1AA12B1FC8ED82007F988C /* CriarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1AA12A1FC8ED82007F988C /* CriarViewController.swift */; };
 		EC22CC501FCCEB0400F22F6E /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC22CC4F1FCCEB0400F22F6E /* Alerta.swift */; };
@@ -28,6 +29,7 @@
 		0982D10D91594EF3AA3F8CDB /* Pods-Snapchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snapchat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Snapchat/Pods-Snapchat.release.xcconfig"; sourceTree = "<group>"; };
 		CC23552EB7156378E7B12992 /* Pods_Snapchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snapchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2418995CF1A338B6E9F532 /* Pods-Snapchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snapchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Snapchat/Pods-Snapchat.debug.xcconfig"; sourceTree = "<group>"; };
+		EC17DACF1FD4510600FFCD7E /* Snap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
 		EC1AA1281FC8ED4B007F988C /* EntrarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntrarViewController.swift; sourceTree = "<group>"; };
 		EC1AA12A1FC8ED82007F988C /* CriarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarViewController.swift; sourceTree = "<group>"; };
 		EC22CC4F1FCCEB0400F22F6E /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 			children = (
 				EC22CC4F1FCCEB0400F22F6E /* Alerta.swift */,
 				EC296A401FD248D7000AC754 /* Usuario.swift */,
+				EC17DACF1FD4510600FFCD7E /* Snap.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				EC296A3F1FD244A7000AC754 /* UsuariosTableViewController.swift in Sources */,
 				EC1AA12B1FC8ED82007F988C /* CriarViewController.swift in Sources */,
 				EC7DD9A21FC4811800223E09 /* ViewController.swift in Sources */,
+				EC17DAD01FD4510600FFCD7E /* Snap.swift in Sources */,
 				EC7CE0E41FCB31F400E2032A /* exUIImage.swift in Sources */,
 				EC7CE0E01FCAFFD900E2032A /* SnapsViewController.swift in Sources */,
 				EC7DD9A01FC4811800223E09 /* AppDelegate.swift in Sources */,

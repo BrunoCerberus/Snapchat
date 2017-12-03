@@ -9,8 +9,11 @@
 import UIKit
 import Firebase
 
-class SnapsViewController: UIViewController {
-
+class SnapsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var snaps: [Snap] = []
+    
+    @IBOutlet weak var tableView: UITableView!
     
     @IBAction func sair(_ sender: Any) {
         let autenticacao = Auth.auth()
@@ -30,13 +33,67 @@ class SnapsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
+        let autenticacao = Auth.auth()
+        
+        if let idUsuarioLogado = autenticacao.currentUser?.uid {
+            
+            let database = Database.database().reference()
+            let usuarios = database.child("usuarios")
+            let snaps = usuarios.child(idUsuarioLogado).child("snaps")
+            
+            //criar ouvinte
+            snaps.observe(DataEventType.childAdded, with: { (snapshot) in
+                let dados = snapshot.value as? NSDictionary
+                
+                let snap = Snap()
+                snap.identificador = snapshot.key
+                snap.nome = dados!["nome"] as! String
+                snap.de = dados!["de"] as! String
+                snap.descricao = dados!["descricao"] as! String
+                snap.urlImagem = dados!["urlImagem"] as! String
+                snap.idImagem = dados!["idImagem"] as! String
+                self.snaps.append(snap)
+                self.tableView.reloadData()
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        let totalSnaps = self.snaps.count
+        if totalSnaps == 0 {
+            return 1
+        }
+        return totalSnaps
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell", for: indexPath)
+        
+        let totalSnaps = self.snaps.count
+        if totalSnaps == 0 {
+            cell.textLabel?.text = "Nenhum snap para voce :)"
+        } else {
+            cell.textLabel?.text = self.snaps[indexPath.row].nome
+            return cell
+        }
+        
+        return cell
+    }
+    
+    
+    
     
 
     /*

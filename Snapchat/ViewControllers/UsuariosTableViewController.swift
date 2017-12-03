@@ -27,6 +27,10 @@ class UsuariosTableViewController: UITableViewController {
             
             let dados = snapshot.value as? NSDictionary
             
+            //recuperar dados do usuario logado
+            let autenticacao = Auth.auth()
+            let idUsuarioLogado = autenticacao.currentUser?.uid
+            
             //recuperar dados
             let emailUsuario = dados!["email"] as! String
             let nomeUsuario = dados!["nome"] as! String
@@ -35,7 +39,10 @@ class UsuariosTableViewController: UITableViewController {
             let usuario = Usuario(email: emailUsuario, nome: nomeUsuario, uid: idUsuario)
             
             //adicionar usuario no array
-            self.usuarios.append(usuario)
+            if idUsuario != idUsuarioLogado {
+                 self.usuarios.append(usuario)
+            }
+           
             self.tableView.reloadData()
             print(self.usuarios)
         }
@@ -97,6 +104,8 @@ class UsuariosTableViewController: UITableViewController {
                 
                 let snaps = usuarios.child(idUsuarioSelecionado).child("snaps")
                 snaps.childByAutoId().setValue(snap)
+                
+                self.navigationController?.popToRootViewController(animated: true)
             })
         }
         
